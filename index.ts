@@ -12,11 +12,11 @@ let arr: String[] = [];
 io.on("connection", (socket: any) => {
   console.log("New client connected", socket.id);
   arr.push(`${socket.id} is now connected! Total = ${io.engine.clientsCount}`);
-  socket.broadcast.emit("status", arr);
+  socket.emit("status", arr);
   
   socket.on("disconnect", () => {
     arr.push(`${socket.id} is now disconnected! total = ${io.engine.clientsCount}`);
-    socket.broadcast.emit("status", arr);
+    socket.emit("status", arr);
     console.log("Total : ", io.engine.clientsCount)
     if(io.engine.clientsCount === 0){
       arr = []
