@@ -1,19 +1,6 @@
 # Uncomment the lines and make appropriate changes
 
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
-    id: 'decrypt npmrc'
-    args:
-    - kms
-    - decrypt
-    - --ciphertext-file=npmrc_prod.enc
-    - --plaintext-file=/root/.npmrc
-    - --location=global
-    - --keyring=my-keyring
-    - --key=npm-key
-    volumes:
-      - name: 'home'
-        path: /root/
   - name: 'gcr.io/cloud-builders/npm'
     id: 'install'
     args: ['install']
