@@ -12,7 +12,7 @@ io.on("connection", (socket: any) => {
   console.log("New client connected", socket.id);
   //
   arr.push(`${socket.id} is now connected! Total = ${io.engine.clientsCount}`);
-  socket.emit("status", arr);
+  socket.broadcast.emit("status", arr);
   socket.on("disconnect", () => {
     arr.push(`${socket.id} is now disconnected! Total = ${io.engine.clientsCount}`);
     socket.broadcast.emit("status", arr);
