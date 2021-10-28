@@ -6,6 +6,8 @@ const io = require("socket.io")(http, {
     methods: ["GET", "POST"],
   },
 });
+
+const PORT = process.env.PORT || 8080;
 const arr: String[] = [];
 io.on("connection", (socket: any) => {
   console.log("New client connected", socket.id);
@@ -18,6 +20,6 @@ io.on("connection", (socket: any) => {
   });
 });
 
-http.listen(4000, () => {
+http.listen(PORT, () => {
   console.log("App running on 4000");
 });
