@@ -11,14 +11,8 @@ const PORT = process.env.PORT || 4000;
 let arr: String[] = [];
 io.on("connection", (socket: any) => {
   console.log("New client connected", socket.id);
-  io.engine.clientsCount
   arr.push(`${socket.id} is now connected! Total = ${io.engine.clientsCount}`);
   socket.broadcast.emit("status", arr);
-
-  socket.on("connect", ()=>{
-    socket.emit("status ", `Welcome  ${socket.id}`)
-  })
-
   
   socket.on("disconnect", () => {
     arr.push(`${socket.id} is now disconnected! total = ${io.engine.clientsCount}`);
