@@ -2,7 +2,7 @@ const app = require("express");
 const http = require("http").createServer(app);
 const io = require("socket.io")(http, {
   cors: {
-    origin: "https://socket-backend-3towjekr2q-ue.a.run.app",
+    origin: "https://socket-frontend-3towjekr2q-ue.a.run.app",
     methods: ["GET", "POST"],
   },
 });
